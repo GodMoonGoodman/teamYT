@@ -1,0 +1,94 @@
+{% load static %}
+
+<html>
+  <head>
+	  <title>{% block title%}{%endblock%}</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+	  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+	  <!-- <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
+	  <!-- Vendor styles -->
+	  <link rel="stylesheet" href="{% static 'yonto/css/app.min.css'%}">
+
+	  {% block extrastyle %}
+	  {% endblock %}
+	  <!-- App styles -->
+	<!--       <link rel="stylesheet" href="{% static 'yonto/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css'%}"> -->
+
+	  <!-- <link rel="stylesheet" href="{% static 'yonto/css/app.min.css'%}"> -->
+  </head>
+  <body>
+    
+    <!-- Javascript -->
+    <!-- Vendors -->
+
+    <!-- <script src="{% static 'yonto/vendors/bower_components/jquery/dist/jquery.min.js'%}"></script> -->
+    <div class="site-wrapper">
+
+	      <div class="site-wrapper-inner">
+
+	        <div class="cover-container">
+
+	          <div class="masthead clearfix">
+	            <div class="inner">
+	              <h3 class="masthead-brand"><a href="http://127.0.0.1:8000">연토</a></h3>
+	              <nav class="nav nav-masthead">
+	              	{% url 'register' as my_reg %}
+	              	{% url 'main' as my_search %}
+	              	{% url 'whatis' as my_whatis %}
+
+	              	{% if request.path == my_reg %}
+	                <a class="nav-link" href="/">검색</a>
+	                <a class="nav-link" href="/whatisyonto/">연토가뭐야?</a>
+	                	{% if user.is_active %}
+	                	<a class="nav-link" href="/logout/">{{user.username}} logout</a>
+	                	{% else %}
+	                	<a class="nav-link active" href="/login/">로그인</a>
+	                	{% endif %}
+	                {% elif request.path == my_search %}
+	                <a class="nav-link active" href="/">검색</a>
+	                <a class="nav-link" href="/whatisyonto/">연토가뭐야?</a>
+	                {% if user.is_active %}
+	                	<a class="nav-link" href="/logout/">{{user.username}} logout</a>
+	                	{% else %}
+	                	<a class="nav-link" href="/login/">로그인</a>
+	                	{% endif %}
+	                {% elif request.path == my_whatis %}
+	                <a class="nav-link" href="/">검색</a>
+	                <a class="nav-link active" href="/whatisyonto/">연토가뭐야?</a>
+	                {% if user.is_active %}
+	                	<a class="nav-link" href="/logout/">{{user.username}} logout</a>
+	                	{% else %}
+	                	<a class="nav-link" href="/login/">로그인</a>
+	                	{% endif %}
+	                {% endif %}
+	              </nav>
+	            </div>
+	          </div>
+
+	          <div class="inner cover">
+	                {% block content%}
+				    {% endblock %}
+	          </div>
+
+	          <div class="mastfoot">
+	            <div class="inner">
+	              <p>개발자 <a href="https://github.com/GodMoonGoodman/">Github</a>, by <a href="https://www.facebook.com/HealMe.Blue">Facebook</a>.</p>
+	            </div>
+	          </div>
+
+	        </div>
+
+	      </div>
+
+	    </div>
+
+
+    {% block scripts %}
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	    <script src="{% static 'yonto/js/app.min.js'%}"></script>
+    {% endblock %}
+  </body>
+</html>

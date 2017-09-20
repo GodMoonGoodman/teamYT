@@ -1,0 +1,53 @@
+{% extends 'yonto/base.html' %}
+
+{% block title%} 연토 : 검색결과 {% endblock %}
+
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'yonto/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'yonto/css/cover.css'%}">
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    
+
+    <div class="row justify-content-md-center table-header">
+        <h1>검색어 : {{keyword}}</h1>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>학정번호</th>
+                <th>강의</th>
+                <th>교수</th>
+                <th>학점</th>
+                <th>데이터</th>
+                <th>분석상황</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in course %}
+            <tr>
+                <td>{{ c.hakno }}-{{ c.bb }}-{{ c.sbb }}</td>
+                <td>{{ c.title }}</td>
+                <td>{{ c.professor }}</td>
+                <td>{{ c.credit }}</td>
+                <td><a class="url" href="{{base}}yshs_domain=H1&yshs_hyhg={{c.hakgi}}&yshs_hakno={{c.hakno}}&yshs_bb={{c.bb}}&yshs_sbb={{c.sbb}}" target="_blank">보기</a></td>
+                <td>{{ c.analysis }}</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+
+
+</div>
+
+
+{% endblock %}

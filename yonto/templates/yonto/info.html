@@ -1,0 +1,39 @@
+{% extends 'yonto/base.html' %}
+
+{% block title%} 연토 : 검색결과 {% endblock %}
+
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'yonto/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'yonto/css/cover.css'%}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    
+
+    <div class="row justify-content-md-center table-header">
+    	{% if noyscec == False %}
+			<h5>아쉽게도 <bold class="orange">{{keyword}}</bold>는 없는 강의네요 ㅜㅜ</h5>
+	        <h5>좌절하지 마시고 올바른 학정번호로 입력해주세요</h5>
+    	{% else %}
+	    	{% if len != 0 %}
+	        <h5>아쉽게도 아직 <bold class="orange">{{keyword}}</bold>에 대한 데이터가 없네요. </h5>
+	        <h5>검색창에서 학정번호로 검색하시면 자동으로 추가 됩니다~~</h5>
+	        {% else %}
+			<h5><bold class="orange">검색어</bold>를 주셔야 찾습니다 ㅡ,.ㅡ</h5>
+
+	        <h5>검색창에서 학정번호 or 과목명으로 검색해주세요</h5>
+        	{% endif %}        
+    	{% endif %}
+    </div>
+
+
+</div>
+
+
+{% endblock %}

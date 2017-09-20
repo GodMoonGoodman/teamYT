@@ -1,0 +1,28 @@
+{% extends 'yonto/base.html' %}
+
+{% block title%} 연토 : 연토가뭐야? {% endblock %}
+
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'yonto/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'yonto/css/cover.css'%}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    
+
+    <div class="row justify-content-md-center table-header">
+		<h5>뭐긴뭐야 <bold class="orange">인공지능이 알려주는</bold>가장효율적인 마일리지 추천 서비스야</h5>
+        <h5>이제 마일리지 얼마나 투자할지 모르겠으면 <bold class="orange">연토</bold>를 찾아봐</h5>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

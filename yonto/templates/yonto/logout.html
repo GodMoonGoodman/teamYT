@@ -1,0 +1,30 @@
+{% extends 'yonto/base.html' %}
+
+{% block title%} 연토 : 로그아웃 {% endblock %}
+
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'yonto/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'yonto/css/cover.css'%}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    
+
+    <div class="row justify-content-md-center table-header">
+			<p><h1><bold class="orange">잘 가!</bold></h1></p>
+    </div>
+
+ 	<div class="row justify-content-md-center table-header">
+	        <p><h5>잘가~ 다음 수강신청때 또 봐</h5><p>
+    </div>
+
+</div>
+
+
+{% endblock %}
